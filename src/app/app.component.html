@@ -1,6 +1,25 @@
-<div class="container">
-  <p class="h3 text-muted text-center">
-    hello world
-  </p>
-  <app-card></app-card>
+<div class="app p-4 container-fluid">
+  <div class="row">
+    <div class="col col-md-4 offset-md-4">
+      <div class="text-center">
+        <app-card [user]="user" *ngIf="user; else loadingBlock"></app-card>
+        <button 
+          (click)="getNewUser()"
+          class="btn btn-success m-3">
+          <fa-icon [icon]="faUsers" ></fa-icon>
+          Get New User
+        </button>
+        <ng-template #loadingBlock>
+          <div class="text-center">
+            <div class="spinner-border spinner-grow-mg text-white" role="status">
+              <div class="text-white">
+                <span class="m-1">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
 </div>
